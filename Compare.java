@@ -12,17 +12,14 @@ public class Compare {
 
             int num = list[(int)(Math.random() * list.length)];
 
-            System.out.println("start: " + num + "...end");
+            int linear = linearSearch(list, num);
 
-            //int avgLnS = linearSearch(list, num);
-
-            //int avgBS = binarySearch(list, num);
-
-            // develop the code to find out the average comparisons for
-            // searching a target in the list using linear search and binary search
+            int binary = binarySearch(list, num); 
 
             //System.out.printf("%-10d%-20.2f%-20.2f\n", size, avgLnS, avgBS);
         }
+        System.out.println("done");
+        System.exit(0);
     }
     /**
      * Generates a sorted array of integers (from one to one million) which is the size of the integer parameter.
@@ -41,14 +38,55 @@ public class Compare {
         return data;
     }
 
+    /**
+     * Performs a linear search on data for num, and returns the number of comparrisons
+     * @param data array of integers
+     * @param num an integer to search for 
+     * @return an integer representing the number of comparrisons 
+     */
     public static int linearSearch(int[] data, int num) {
 
-        return 0;
+        int counter = 0;
+
+        for (int i = 0; i < data.length; i++)
+            if (data[i] == num)
+                return counter++;
+            else
+                counter++;
+        
+        return counter;
     }
 
+    /**
+     * Performs a binary search on data for num, return the number of comparrisons
+     * @param data an array of integers
+     * @param num an interger to search for
+     * @return an integer representing the number of comparrisons
+     */
     public static int binarySearch(int[] data, int num) {
 
+        int counter = 0,
+            mid = (data.length - 1) / 2,
+            last = data.length - 1,
+            first = 0;
 
-        return 0;
+        while (first <= last) {
+            if (data[mid] < num) {
+                counter++;
+                first = mid + 1;
+            
+            } else if (data[mid] == num) {
+                counter++;
+                break;
+
+            } else {
+                counter++;
+                last = mid - 1;
+
+            }
+            mid = (first + last) / 2;
+        }
+            
+        return counter;
     }
 }
