@@ -16,6 +16,10 @@ public class Compare {
 
             int binary = binarySearch(list, num); 
 
+            // make another loop here?
+            // if linear or binary return -1 then num was not found in the list
+            // do not add these to the average
+
             //System.out.printf("%-10d%-20.2f%-20.2f\n", size, avgLnS, avgBS);
         }
         System.out.println("done");
@@ -54,7 +58,8 @@ public class Compare {
             else
                 counter++;
         
-        return counter;
+        // num is not in data
+        return -1;
     }
 
     /**
@@ -71,22 +76,19 @@ public class Compare {
             first = 0;
 
         while (first <= last) {
-            if (data[mid] < num) {
-                counter++;
-                first = mid + 1;
+            counter++;
             
-            } else if (data[mid] == num) {
-                counter++;
-                break;
-
-            } else {
-                counter++;
+            if (data[mid] < num)
+                first = mid + 1;
+            else if (data[mid] == num)
+                return counter;
+            else
                 last = mid - 1;
 
-            }
             mid = (first + last) / 2;
         }
-            
-        return counter;
+        
+        // if num is not in data
+        return -1;
     }
 }
