@@ -1,3 +1,4 @@
+import java.util.*;
 public class Compare {
     public static void main (String[] args) {
 
@@ -7,22 +8,20 @@ public class Compare {
 
         for (int size=10; size <1000000; size*=10) {
 
-            int [] list = genArray(size); //generates an array of random
-            //integers with the given size.
+            int [] list = genArray(size); 
 
-            for (int i = 0; i < size; i++)
-            System.out.print(list[i] + ", "); //test
+            int avgLnS = linearSearch(list);
 
+            int avgBS = binarySearch(list);
 
             // develop the code to find out the average comparisons for
             // searching a target in the list using linear search and binary search
-            // To sort your data use Arrays.sort(list)
 
-            //System.out.printf "%-10d%-20.2f%-20.2f\n", size, avgLnS, avgBS);
+            System.out.printf "%-10d%-20.2f%-20.2f\n", size, avgLnS, avgBS);
         }
     }
     /**
-     * Generates an array of integers which is the size of the integer parameter.
+     * Generates a sorted array of integers (from one to one million) which is the size of the integer parameter.
      * @param size an integer which represents the size of the array to create
      * @return the array of size size
      */
@@ -31,8 +30,21 @@ public class Compare {
         int[] data = new int[size];
 
         for (int i = 0; i < data.length; i++)
-            data[i] = 1 + (int)(Math.random() * 10);
+            data[i] = 1 + (int)(Math.random() * 1000000);
+        
+        Arrays.sort(data);
 
         return data;
+    }
+
+    public static int linearSearch(int[] data) {
+
+        return 0;
+    }
+
+    public static int binarySearch(int[] data) {
+
+
+        return 0;
     }
 }
