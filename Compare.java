@@ -10,19 +10,21 @@ public class Compare {
 
             int[] list = genArray(size); 
 
-            int num = list[(int)(Math.random() * list.length)];
+            //int num = list[(int)(Math.random() * list.length)];
+            double linear = 0, binary = 0;
 
-            int linear = linearSearch(list, num);
+            for (int i = 0; i < list.length; i++){
+                linear += linearSearch(list, i);
+                binary += binarySearch(list, i); 
+            }
 
-            int binary = binarySearch(list, num); 
+            double avgLnS = linear / list.length,
+                avgBS = binary / list.length;
 
-            // make another loop here?
-            // if linear or binary return -1 then num was not found in the list
-            // do not add these to the average
 
-            //System.out.printf("%-10d%-20.2f%-20.2f\n", size, avgLnS, avgBS);
+            System.out.printf("%-10d%-20.2f%-20.2f\n", size, avgLnS, avgBS);
         }
-        System.out.println("done");
+
         System.exit(0);
     }
     /**
@@ -52,14 +54,13 @@ public class Compare {
 
         int counter = 0;
 
-        for (int i = 0; i < data.length; i++)
+        for (int i = 0; i < data.length; i++) {
+            counter++;
             if (data[i] == num)
-                return counter++;
-            else
-                counter++;
-        
-        // num is not in data
-        return -1;
+                break;
+        }
+
+        return counter;
     }
 
     /**
@@ -81,14 +82,13 @@ public class Compare {
             if (data[mid] < num)
                 first = mid + 1;
             else if (data[mid] == num)
-                return counter;
+                break;
             else
                 last = mid - 1;
 
             mid = (first + last) / 2;
         }
         
-        // if num is not in data
-        return -1;
+        return counter;
     }
 }
