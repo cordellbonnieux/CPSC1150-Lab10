@@ -18,9 +18,13 @@ public class MergeSort{
             copyArray(list, firstHalf, 0, mid);
             mergeSort(firstHalf); //sorts firstHalf in ascending order by recursion
 
+            
+
             int [] secondHalf = new int[list.length - mid];
             copyArray(list, secondHalf, mid, list.length);
             mergeSort(secondHalf); //sorts secondHalf in ascending order by recursion
+
+            
 
             // merges to lists ie. firstHalf and second half into a sorted list
             merge(firstHalf, secondHalf, list);
@@ -57,4 +61,18 @@ public class MergeSort{
     }
 
     // develop merge method to complete the program
+    public static void merge(int[] firstHalf, int[] secondHalf, int[] list) {
+
+        int countF = 0, countS = 0;
+
+        for (int i = 0; i < list.length; i++)
+            if (countF < firstHalf.length)
+                if (countS >= secondHalf.length || firstHalf[countF] < secondHalf[countS])
+                    list[i] = firstHalf[countF++];
+                else
+                    list[i] = secondHalf[countS++];
+            else 
+                list[i] = secondHalf[countS++];
+
+    }
 }
