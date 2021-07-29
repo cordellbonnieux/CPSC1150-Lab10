@@ -1,5 +1,6 @@
 *.pdf
 .~*
-.docx
-.odt
-.pdf
+*.docx
+*.odt
+*.pdf
+*.zip

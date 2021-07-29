@@ -1,4 +1,10 @@
 import java.util.*;
+/**
+ * This program compares arrays of random integers, of various sizes using linear and 
+ * binary searches. The results from the searches are then displayed in the console.
+ * @author Cordell Bonnieux
+ * @since July 27 2021
+ */
 public class Compare {
     public static void main (String[] args) {
 
